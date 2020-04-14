@@ -11,12 +11,12 @@ public class Josephu {
     public static void main(String[] args) {
 // 测试一把看看构建环形链表，和遍历是否ok
         CircleSingleLinkedList circleSingleLinkedList = new CircleSingleLinkedList();
-        circleSingleLinkedList.addBoy(125);// 加入5个小孩节点
+        circleSingleLinkedList.addBoy(5);// 加入5个小孩节点
         circleSingleLinkedList.showBoy();
 
-//        //测试一把小孩出圈是否正确
-//        circleSingleLinkedList.countBoy(10, 20, 125); // 2->4->1->5->3
-//        //String str = "7*2*2-5+1-5+3-3";
+        //测试一把小孩出圈是否正确
+        circleSingleLinkedList.countBoy(1, 2, 5); // 2->4->1->5->3
+        //String str = "7*2*2-5+1-5+3-3";
     }
 }
 //创建一个环形的单向链表
@@ -89,7 +89,30 @@ class CircleSingleLinkedList{
             }
             helper=helper.getNext();
         }
+        //小孩报数前，先让 first 和  helper 移动 k - 1次
+        for(int j = 0; j < startNo - 1; j++) {
+            first = first.getNext();
+            helper = helper.getNext();
+        }
+        //当小孩报数时，让first 和 helper 指针同时 的移动  m  - 1 次, 然后出圈
+        //这里是一个循环操作，知道圈中只有一个节点
+        while(true) {
+            if(helper == first) { //说明圈中只有一个节点
+                break;
+            }
+            //让 first 和 helper 指针同时 的移动 countNum - 1
+            for(int j = 0; j < countNum - 1; j++) {
+                first = first.getNext();
+                helper = helper.getNext();
+            }
+            //这时first指向的节点，就是要出圈的小孩节点
+            System.out.printf("小孩%d出圈\n", first.getNo());
+            //这时将first指向的小孩节点出圈
+            first = first.getNext();
+            helper.setNext(first); //
 
+        }
+        System.out.printf("最后留在圈中的小孩编号%d \n", first.getNo());
     }
 }
 //创建一个Boy类，表示一个节点
