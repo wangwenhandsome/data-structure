@@ -11,7 +11,7 @@ import com.sun.org.apache.bcel.internal.generic.POP;
 
 public class Calculator {
     public static void main(String[] args) {
-        String expression = "1+2*6-4";
+        String expression = "13-9/3+4";
         //创建两个栈，一个数栈，一个符号栈
         ArrayStack2 numStack = new ArrayStack2(10);
         ArrayStack2 operSatck = new ArrayStack2(10);
@@ -23,6 +23,7 @@ public class Calculator {
         int oper = 0;
         int res = 0;
         char ch = ' ';//将每次扫描得到的char保存到ch中
+        String keepNum="";
         //开始while循环扫描
         while (true) {
             //依次得到expression的每一个字符
@@ -51,12 +52,30 @@ public class Calculator {
                 }
                 else{
                     //如果为空直接入栈。。
-                    // 如果当前的操作符的优先级大于栈中的操作符， 就直接入符号栈.
                     operSatck.push(ch);
                 }
             }else {
                 //如果我们发现是一个数字, 就直接入数栈
-                numStack.push(ch - 48);
+                //分析思路
+                //1.当处理多位数时，不能发现数就立即入栈，因为可能是多位数
+                //2.在处理数，需要向expression的表达式的index后在看一位，如果是数就进行扫描，如果是符号就入栈
+                //3.需要定义一个变量
+                //处理多位数
+                keepNum+=ch;
+
+                //如果ch已经是expression的最后一位
+                if (index==expression.length()-1){
+                    numStack.push(Integer.parseInt(keepNum));
+                }else{
+                    //判断下一个字符是不是数字，如果是继续扫描
+                    if (operSatck.isOper(expression.substring(index+1,index+2).charAt(0))){
+                        //如果后一位是操作符就入栈
+                        numStack.push(Integer.parseInt(keepNum));
+                        //重要！！！！！清空
+                        keepNum="";
+                    }
+                }
+
             }
             //让index加1,并且判断是否到了最后
             index++;
