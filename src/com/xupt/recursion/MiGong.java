@@ -35,7 +35,8 @@ public class MiGong {
             System.out.println();
         }
         //使用递归回溯
-        setWay(map,1,1);
+//        setWay(map,1,1);
+        setWay2(map,1,1);
         //输出新的地图
         System.out.println("输出新的地图。。。。。。");
         for (int i=0;i<8;i++){
@@ -83,5 +84,31 @@ public class MiGong {
               return false;
           }
       }
+    }
+    //修改策略
+    public static boolean setWay2(int [][] map,int i,int j){
+        if (map[6][5]==2){//已经找到了
+            return true;
+        }else{
+            if (map[i][j]==0){//如果当前这个点没有走过
+                //按照策略走
+                map[i][j]=2;//假定这个点可以走通
+                if (setWay2(map,i-1,j)){//向上走
+                    return true;
+                }else if (setWay2(map,i,j+1)){//向右走
+                    return true;
+                }else if (setWay2(map,i+1,j)){//向下走
+                    return true;
+                }else if (setWay2(map,i,j-1)){//向左走
+                    return true;
+                }else{
+                    //说明这个路走不通
+                    map[i][j]=3;
+                    return false;
+                }
+            }else{   //如果map[i][j]!=0,可能是1，2，3
+                return false;
+            }
+        }
     }
 }
