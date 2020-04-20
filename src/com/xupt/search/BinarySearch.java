@@ -16,12 +16,12 @@ public class BinarySearch {
 //        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 13,14,15,16,17,18,19,20 };
 
 
-        //
-//		int resIndex = binarySearch(arr, 0, arr.length - 1, 1000);
-//		System.out.println("resIndex=" + resIndex);
 
-        List<Integer> resIndexList = binarySearch2(arr, 0, arr.length - 1, 1000);
-        System.out.println("resIndexList=" + resIndexList);
+		int resIndex = binarySearch(arr, 0, arr.length - 1, 1000000);
+		System.out.println("resIndex=" + resIndex);
+
+//        List<Integer> resIndexList = binarySearch2(arr, 0, arr.length - 1, 1000);
+//        System.out.println("resIndexList=" + resIndexList);
     }
     // 二分查找算法
     /**
@@ -35,7 +35,7 @@ public class BinarySearch {
         int mid=(left+right)/2;
         int midVal=arr[mid];
         // 当 left > right 时，说明递归整个数组，但是没有找到
-        if (left>right){
+        if (left>right||findVal<arr[0]||findVal>arr[arr.length-1]){
             return -1;
         }
         if (findVal>midVal){ // 向右递归
