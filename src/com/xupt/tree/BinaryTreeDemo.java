@@ -82,7 +82,7 @@ public class BinaryTreeDemo {
 
 }
 
-//定义BinaryTree 二叉树
+////定义BinaryTree 二叉树
 class BinaryTree {
     private HeroNode root;
 
