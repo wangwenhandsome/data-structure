@@ -122,6 +122,7 @@ public class ShellSort {
                     }
                     //当退出while后，就给temp找到插入的位置
                     arr[j] = temp;
+                    //
                 }
 
             }
