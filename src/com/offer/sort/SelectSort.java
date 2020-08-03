@@ -1,6 +1,5 @@
 package com.offer.sort;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 
 /**
@@ -16,18 +15,21 @@ public class SelectSort {
         SelectSort(arr);
     }
     public static void SelectSort(int []arr){
-        for (int i=0;i<arr.length-1;i++){
-            int temp=0,k=0;
-            for(int j=i;j<arr.length;j++){
-                temp=arr[i];
-               if(temp>arr[j]){
-                 temp=arr[j];
-                 k=j;
+
+       for(int i=0;i<arr.length-1;i++){
+           int min = arr[i],k = i;
+           for(int j=i+1;j<arr.length;j++){
+               if(min>arr[j]){
+                   min=arr[j];
+                   k=j;
                }
-            }
-            arr[k]=arr[i];
-            arr[i]=temp;
-        }
+           }
+           if(k!=i){
+               arr[k]=arr[i];
+               arr[i]=min;
+           }
+
+       }
         System.out.println(Arrays.toString(arr));
     }
 

@@ -1,5 +1,6 @@
 package com.offer.sort;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
@@ -13,18 +14,17 @@ public class Insertsort {
     public static void main(String[] args) {
         int[] arr = {101, 34, 119, 1, -1, 89};
         insertsort(arr);
-
     }
-    public static void insertsort(int [] arr){
-        for (int i=1;i<=arr.length-1;i++){
-            int j=i-1;
-            int temp=arr[i];
-            while(j>=0&&arr[j]>temp){
-                    arr[j+1]=arr[j];
-                    arr[j]=temp;
-                    j--;
-            }
-
-        }
+    public static void insertsort(int [] arr) {
+       for(int i=1;i<arr.length;i++){
+           int insertVal=arr[i];
+           int insertIndex=i-1;
+           while(insertIndex>=0&&insertVal<arr[insertIndex]){
+              arr[insertIndex+1]=arr[insertIndex];
+              insertIndex--;
+           }
+           arr[insertIndex+1]=insertVal;
+       }
+        System.out.println(Arrays.toString(arr));
     }
 }
