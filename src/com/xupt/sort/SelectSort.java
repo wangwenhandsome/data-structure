@@ -37,11 +37,9 @@ public class SelectSort {
 
     //选择排序
     public static void selectSort(int[] arr) {
-
         //在推导的过程，我们发现了规律，因此，可以使用for来解决
         //选择排序时间复杂度是 O(n^2)
-
-        for (int i=0;i<arr.length-1;i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
             int min = arr[i];
             for (int j = i + 1; j < arr.length; j++) {
@@ -50,13 +48,12 @@ public class SelectSort {
                     minIndex = j; //重置minIndex
                 }
             }
-            if (minIndex!=i){
-               arr[minIndex]=arr[i];
-               arr[i]=min;
+            if (minIndex != i) {
+                arr[minIndex] = arr[i];
+                arr[i] = min;
             }
-//            System.out.println("第"+(i+1)+"轮后~~");
-//            System.out.println(Arrays.toString(arr));// 1, 34, 119, 101
         }
+    }
 
         //使用逐步推导的方式来，讲解选择排序
         //第1轮
@@ -118,4 +115,3 @@ public class SelectSort {
         System.out.println(Arrays.toString(arr));// 1, 34, 119, 101
          */
     }
-}

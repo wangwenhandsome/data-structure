@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @Author: 王文
  * @Date: 2020/8/4 10:47
  * @Version: 1.0
- * @Description:
+ * @Description:归并排序
  */
 
 public class Test6 {
@@ -18,52 +18,49 @@ public class Test6 {
 
     }
 
-    public static void mergeSort(int[] arr, int left, int right, int[] temp) {
-       if (left < right) {
-            int mid = (left + right) / 2;
+   public  static void mergeSort(int [] arr,int left,int right,int [] temp){
+        if(left<right){
+            int mid=(left+right)/2;
             //左递归
-            mergeSort(arr, left, mid, temp);
+            mergeSort(arr,left,mid,temp);
             //右递归
-            mergeSort(arr, mid + 1, right, temp);
-            //治
-            merge(arr, left, mid, right, temp);
+            mergeSort(arr,mid+1,right,temp);
+            merge(arr,left,mid,right,temp);
         }
-    }
-
-    public static void merge(int[] arr, int left, int mid, int right, int[] temp) {
-        int i = left;
-        int j = mid + 1;
-        int t = 0;
-        while (i <= mid && j <= right) {
-            if (arr[i] <= arr[j]) {
-                temp[t] = arr[i];
-                t++;
+   }
+   public static void merge(int [] arr,int left,int mid,int right,int []temp){
+        int i=left;
+        int j=mid+1;
+        int t=0;
+        while (i<=mid&&j<=right){
+            if (arr[i]<=arr[j]){
+                temp[t]=arr[i];
                 i++;
-
-            } else {
-                temp[t] = arr[j];
                 t++;
+            }else{
+                temp[t]=arr[j];
                 j++;
+                t++;
 
             }
         }
-        while (i <= mid) {
-            temp[t] = arr[i];t++;
+        while (i<=mid){
+            temp[t]=arr[i];
             i++;
-
+            t++;
         }
-        while (j <= right) {
-            temp[t] = arr[j];t++;
+        while (j<=right){
+            temp[t]=arr[j];
             j++;
-
+            t++;
         }
 
-        t = 0;
-        int index = left;
-        while (index <= right) {
-            arr[index] = temp[t];
+        int index=0;
+        t=0;
+        while (index<=right){
+            arr[index]=arr[t];
             index++;
             t++;
         }
-    }
+   }
 }
