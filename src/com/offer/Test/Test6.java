@@ -41,7 +41,6 @@ public class Test6 {
                 temp[t]=arr[j];
                 j++;
                 t++;
-
             }
         }
         while (i<=mid){
@@ -55,10 +54,10 @@ public class Test6 {
             t++;
         }
 
-        int index=0;
+        int index=left;
         t=0;
         while (index<=right){
-            arr[index]=arr[t];
+            arr[index]=temp[t];
             index++;
             t++;
         }
