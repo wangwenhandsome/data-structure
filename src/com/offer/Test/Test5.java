@@ -16,31 +16,29 @@ public class Test5 {
         System.out.println(Arrays.toString(arr));
     }
     public static void quickSort(int [] arr,int left,int right){
-       int l,r,t;
-       l=left;
-       r=right;
-       if(l>r){
-           return;
-       }
-       //临时性变量
-        int temp=arr[l];
-       while(l<r){
-           while(l<r&&temp<=arr[r]){
-               r--;
-           }
-           while(l<r&&temp>=arr[l]){
-               l++;
-           }
-           if(l<r){
-               t=arr[r];
-               arr[r]=arr[l];
-               arr[l]=t;
-           }
-       }
-       arr[left]=arr[r];
-        arr[r]=temp;
-        quickSort(arr,left,r-1);
-        quickSort(arr,r+1,right);
-
+      int l,r,t;
+      if(left>right){
+          return;
+      }
+      l=left;
+      r=right;
+      int temp=arr[l];
+      while(l<r){
+          if(l<r&&arr[r]>=temp){
+              r--;
+          }
+          if(l<r&&arr[l]<=temp){
+              l++;
+          }
+          if(l<r){
+              t=arr[r];
+              arr[r]=arr[l];
+              arr[l]=t;
+          }
+      }
+      arr[left]=arr[r];
+      arr[r]=temp;
+      quickSort(arr,left,r-1);
+      quickSort(arr,r+1,right);
     }
 }
