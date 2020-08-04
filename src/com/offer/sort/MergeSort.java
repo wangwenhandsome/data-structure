@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class MergeSort {
     public static void main(String[] args) {
-        int arr[] = { 8, 4, 5, 7, 1, 3, 6, 2 };
+        int arr[] = {8, -1, 4, -9, 10, 108, 3, 2, 7, 15, 45, -101};
         int temp[] = new int[arr.length]; //归并排序需要一个额外空间
         mergeSort(arr, 0, arr.length - 1, temp);
 
