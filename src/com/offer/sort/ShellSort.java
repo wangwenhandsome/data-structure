@@ -11,8 +11,8 @@ import java.util.Arrays;
 
 public class ShellSort {
     public static void main(String[] args) {
-        int arr[]={8,9,1,7,2,3,5,4,6,0};
-        shellSort2(arr);//交换方式
+        int [] arr={25,88,21,47,19,27,68,65,20};
+        shellSort1(arr);//交换方式
     }
     public static void shellSort1(int [] arr){
         int temp;

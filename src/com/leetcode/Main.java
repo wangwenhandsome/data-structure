@@ -12,7 +12,10 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(9/2);
+      char [] a=new char[1000];
+        a[0]='1';
+        a[1]='2';
+        System.out.println(a.length);
     }
     public int[][] findContinuousSequence(int target) {
         int i=1; //左

@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class SelectSort {
     public static void main(String[] args) {
-        int [] arr={5,4,-1,8,2,10,3};
+        int [] arr={25,88,21,47,19,27,68,65,20};
         SelectSort(arr);
     }
     public static void SelectSort(int []arr){
@@ -28,7 +28,8 @@ public class SelectSort {
                arr[k]=arr[i];
                arr[i]=min;
            }
-
+           System.out.println("第" + (i + 1) + "趟排序后的数组");
+           System.out.println(Arrays.toString(arr));
        }
         System.out.println(Arrays.toString(arr));
     }

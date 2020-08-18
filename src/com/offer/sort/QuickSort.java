@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = {-9,78,0,23,-567,70, -1,900, 4561};
+        int[] arr = {25,88,21,47,19,27,68,35,20};
         quickSort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
@@ -44,9 +44,11 @@ public class QuickSort {
         //最后将基准为与l和r相等位置的数字交换
         arr[left] = arr[l];
         arr[l] = temp;
+        System.out.println(Arrays.toString(arr));
         //递归调用左半数组
         quickSort(arr, left, r - 1);
         //递归调用右半数组
         quickSort(arr, r + 1, right);
+
     }
 }
